@@ -12,7 +12,7 @@ FROM eclipse-temurin:17-jdk
 WORKDIR /app
 # Copy the generated JAR file from the builder stage
 COPY --from=builder /app/target/*.jar app.jar
-# Expose port 8080 (the default port expected by Render)
-EXPOSE 8080
+# Expose the dynamic port provided by Render
+EXPOSE ${PORT}
 # Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
