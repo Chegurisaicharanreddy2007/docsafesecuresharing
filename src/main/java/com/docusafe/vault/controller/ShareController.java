@@ -46,6 +46,7 @@ public class ShareController {
     public ResponseEntity<?> shareDocument(@PathVariable("id") Long id,
             @RequestBody(required = false) Map<String, Object> payload,
             Authentication authentication,
+            jakarta.servlet.http.HttpServletRequest request) {
         try {
             Document document = documentRepository.findById(id)
                     .orElseThrow(() -> new RuntimeException("Document not found"));
